@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+// stores all environment variables as key value pairs
+// Heroku creates PORT, otherwise 3000 is default
+const port = process.env.PORT || 3000;
 // create an Express app
 var app = express();
 
@@ -70,7 +73,7 @@ app.get('/bad', (req, res) => {
 });
 
 // bind app to a port on our machine (3000 is local)
-app.listen(3000, () => {
+app.listen(port, () => {
   // function is for doing something once the app successfully connects to the port
-  console.log('Server is up on port 3000');
+  console.log(`Server is up on port ${port}`);
 });
